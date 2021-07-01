@@ -27,13 +27,20 @@ Route::group(['prefix'=>'admin','middleware'=>'authLogin'],function(){
 
 
     //Company
-    Route::get('companies', 'admin\company@index')->name('companies');
-    Route::get('company/create', 'admin\company@create')->name('createCompany');
-    Route::post('company/store', 'admin\company@store')->name('storeCompany');
+    Route::get('companies', 'admin\CompanyController@index')->name('companies');
+    Route::get('company/create', 'admin\CompanyController@create')->name('createCompany');
+    Route::post('company/store', 'admin\CompanyController@store')->name('storeCompany');
+    Route::post('company/change-sts', 'admin\CompanyController@changeStatus')->name('changeStsCompany');
 
     //Awards
-    Route::get('awards', 'admin\award@index')->name('awards');
-    Route::get('award/create', 'admin\award@create')->name('createAward');
-    Route::post('award/store', 'admin\award@store')->name('storeAward');
+    Route::get('awards', 'admin\AwardController@index')->name('awards');
+    Route::get('award/create', 'admin\AwardController@create')->name('createAward');
+    Route::post('award/store', 'admin\AwardController@store')->name('storeAward');
+    Route::post('award/change-sts', 'admin\AwardController@changeStatus')->name('changeStsAward');
+    //Assign Award
+    Route::post('assign/award', 'admin\CompanyController@assignAward')->name('assignAward');
+    Route::post('assign/change-sts', 'admin\CompanyController@assignChangeStatus')->name('changeStsAssignAward');
+
+    Route::get('assign/code-download/{assignCode}', 'admin\CompanyController@fileDownload')->name('assignCodeDownload');
 });
    

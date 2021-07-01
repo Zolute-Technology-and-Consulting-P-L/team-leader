@@ -1,5 +1,5 @@
 @extends('layout.master')
-@section('title','Companies')
+@section('title','Rewards')
 
 @section('content')
 <div class="pcoded-content">
@@ -10,7 +10,7 @@
                             <div class="page-header-title">
                                 <i class="feather icon-inbox bg-c-blue"></i>
                                 <div class="d-inline">
-                                    <h5>Companeis</h5>
+                                    <h5>Rewards</h5>
                                 </div>
                             </div>
                         </div>
@@ -27,33 +27,29 @@
                         <!-- DOM/Jquery table start -->
                         <div class="card">
                           <div class="card-header">
-                            <h5>Companies</h5>
+                            <h5>Rewards</h5>
                           </div>
                           <div class="card-block">
                             <div class="table-responsive dt-responsive">
                               <table id="dom-jqry" class="table table-striped table-bordered nowrap">
                                 <thead>
                                   <tr>
-                                    <th>Company Name</th>
-                                    <th>Email</th>
-                                    <th>Contact Number</th>
+                                    <th>Reward Name</th>
                                     <th>Status</th>
                                     <th>Action</th>
                                   
                                   </tr>
                                 </thead>
                                 <tbody>
-                                @if($companies->count() > 0)
-                                @foreach($companies as $key=> $v)
+                                @if($awards->count() > 0)
+                                @foreach($awards as $key => $v)
                                   <tr>
                                     <td>{{$v->name}}</td>
-                                    <td>{{$v->email}}</td>
-                                    <td>{{$v->phone}}</td>
                                     <td><select name="select" id="stsdrop_{{$key}}" onchange="changeSts('{{$v->id}}',this.value,this.id)" class="form-control form-control-{{$v->status == 0 ?'success' : 'danger'}} fill">
                                     <option value="0" {{$v->status == 0 ? 'selected' : ''}}>Active</option>
                                     <option value="1" {{$v->status == 1 ? 'selected' : ''}}>Inactive</option>
                                     </select></td>
-                                    <td><a href="" title="Edit"><i class="fa fa-edit"></i></a></td>
+                                    <td><a href="" title="Edit"><i class="fa fa-edit"></i></a>&nbsp;&nbsp; <a href="" title="Delete"><i class="fa fa-trash"></i></a></td>
                                   </tr>
                                  @endforeach
                                  @endif
@@ -61,8 +57,8 @@
                               </table>
                             </div>
                             <span style="float: right">
-                              @if($companies->count() > 0)
-                              {{$companies->links()}}
+                              @if($awards->count() > 0)
+                              {{$awards->links()}}
                               @endif
                               </span>
                           </div>
@@ -90,12 +86,12 @@
 
 @section('scripts')
 <script>
-function changeSts(companyId,value,id){
+function changeSts(awardId,value,id){
     $.ajax({
-        url: "{{route('changeStsCompany')}}",
+        url: "{{route('changeStsAward')}}",
         type: "POST",
         dataType:"JSON",
-        data: {"company_id":companyId,"value":value,"_token":"{{csrf_token()}}"},
+        data: {"award_id":awardId,"value":value,"_token":"{{csrf_token()}}"},
         success:function(res){
             if(res.status == true){
                 if(value == 0){
@@ -107,6 +103,9 @@ function changeSts(companyId,value,id){
             }else{
                 toastr.error(res.message);
             }
+        },
+        error:function(error){
+          toastr.error('Something went wrong!');
         }
     });
 }

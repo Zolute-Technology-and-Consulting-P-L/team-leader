@@ -31,7 +31,8 @@
                     </div>
                 </div>
                 <!-- [ breadcrumb ] end -->
-
+    
+   
                 <div class="pcoded-inner-content">
                   <div class="main-body">
                     <div class="page-wrapper">
@@ -49,19 +50,11 @@
                                   <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">Award Name</label>
                                     <div class="col-sm-10">
-                                      <input type="text" class="form-control" name="award_name" id="name" placeholder="Company Name">
+                                      <input type="text" class="form-control" name="award_name" id="name" placeholder="Award Name">
                                       
                                     </div>
                                   </div>
                                   @csrf
-                                  <div class="form-group row">
-                                    <label class="col-sm-2 col-form-label">Award Type</label>
-                                    <div class="col-sm-10">
-                                      <input type="text" class="form-control" name="award_type" placeholder="Award Type">
-                                      
-                                    </div>
-                                  </div>
-                                  
                                   <div class="form-group row">
                                     <label class="col-sm-2"></label>
                                     <div class="col-sm-10">

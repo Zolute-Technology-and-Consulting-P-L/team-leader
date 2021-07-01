@@ -34,7 +34,8 @@
     <!-- Style.css -->
     <link rel="stylesheet" type="text/css" href="{{asset('files/assets/css/style.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('files/assets/css/widget.css')}}">
-
+    <link rel="stylesheet" href="{{asset('files/bower_components/select2/css/select2.min.css')}}" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet"/>    
     <style>
     .error-help-block{
         color: red;
@@ -69,6 +70,18 @@
    @include('layout.footer')
 
     @yield('scripts')
+  
+    @if(Session::has('error'))
+    <script>
+     toastr.error("{{ Session::get('error') }}");
+    </script>
+    @endif
+    @if(Session::has('success'))
+        <script>
+        toastr.success("{{ Session::get('success') }}");
+        </script>
+    @endif
+  
 </body>
 
 </html>

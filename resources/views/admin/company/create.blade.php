@@ -75,7 +75,6 @@
                                   
                                     </div>
                                   </div>
-                                  
                               
                                   <div class="form-group row">
                                     <label class="col-sm-2"></label>
@@ -107,7 +106,7 @@
 function validForm(){
     var form = $("#createCompanyForm");
     if(form.valid()){
-        alert('true');
+        form.submit();
     }
 }
 </script>
