@@ -122,7 +122,7 @@ class CompanyController extends Controller
 
     public function fileDownload($assignCode){
             $data = '<div class="">
-            <a href="'.route("assignLogoAuthentication",$assignCode).'"><img src="'.url('/public/upload/logo/company-logo-default.svg').'"/></a>
+            <a target="_blank" href="'.route("assignLogoAuthentication",$assignCode).'"><img src="'.url('/public/upload/logo/company-logo-default.svg').'"/></a>
             </div>';
             $file = time() .rand(). '_file.txt';
             $destinationPath=public_path()."/upload/";
