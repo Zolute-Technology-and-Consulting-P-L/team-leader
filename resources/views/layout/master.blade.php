@@ -34,7 +34,7 @@
     <!-- Style.css -->
     <link rel="stylesheet" type="text/css" href="{{asset('files/assets/css/style.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('files/assets/css/widget.css')}}">
-    <link rel="stylesheet" href="{{asset('files/bower_components/select2/css/select2.min.css')}}" />
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/css/select2.min.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet"/>    
     <style>
     .error-help-block{

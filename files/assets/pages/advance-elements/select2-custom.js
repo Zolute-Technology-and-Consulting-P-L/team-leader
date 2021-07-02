@@ -81,6 +81,10 @@ $(document).ready(function(){
         theme: "classic"
     });
 
+    $(".select2").select2({
+        tags: true
+    });
+
     function formatRepo(repo) {
         if (repo.loading) return repo.text;
 

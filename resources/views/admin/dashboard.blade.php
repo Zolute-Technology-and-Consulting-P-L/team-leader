@@ -47,9 +47,7 @@
                                   <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">Company</label>
                                     <div class="col-sm-10">
-                                      <select name="company" class="form-control js-example-disabled-results
-
-">
+                                      <select name="company" class="form-control select2">
                                       <option value="">Select Company</option>
                                       @foreach($companies as $v)
                                       <option value="{{$v->id}}">{{$v->name}}</option>
@@ -60,9 +58,7 @@
                                   <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">Award</label>
                                     <div class="col-sm-10">
-                                    <select name="award" class="form-control js-example-disabled-results
-
-">
+                                    <select name="award" class="form-control select2">
                                       <option value="">Select Award</option>
                                       @foreach($awardes as $v)
                                       <option value="{{$v->id}}">{{$v->name}}</option>

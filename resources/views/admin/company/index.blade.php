@@ -10,7 +10,7 @@
                             <div class="page-header-title">
                                 <i class="feather icon-inbox bg-c-blue"></i>
                                 <div class="d-inline">
-                                    <h5>Companeis</h5>
+                                    <h5>Companies</h5>
                                 </div>
                             </div>
                         </div>
@@ -37,6 +37,8 @@
                                     <th>Company Name</th>
                                     <th>Email</th>
                                     <th>Contact Number</th>
+                                    <th>Web Site</th>
+                                    <th>Created At</th>
                                     <th>Status</th>
                                     <th>Action</th>
                                   
@@ -49,11 +51,13 @@
                                     <td>{{$v->name}}</td>
                                     <td>{{$v->email}}</td>
                                     <td>{{$v->phone}}</td>
+                                    <td><a target="_blank" href="{{$v->website}}"><i class="ti-hand-point-right"></i>&nbsp;{{$v->website}}</a></td>
+                                    <td>{{date('d M Y',strtotime($v->created_at))}}</td>
                                     <td><select name="select" id="stsdrop_{{$key}}" onchange="changeSts('{{$v->id}}',this.value,this.id)" class="form-control form-control-{{$v->status == 0 ?'success' : 'danger'}} fill">
                                     <option value="0" {{$v->status == 0 ? 'selected' : ''}}>Active</option>
                                     <option value="1" {{$v->status == 1 ? 'selected' : ''}}>Inactive</option>
                                     </select></td>
-                                    <td><a href="" title="Edit"><i class="fa fa-edit"></i></a></td>
+                                    <td><a href="{{route('editCompany',base64_encode($v->id))}}" title="Edit"><i class="fa fa-edit"></i></a></td>
                                   </tr>
                                  @endforeach
                                  @endif

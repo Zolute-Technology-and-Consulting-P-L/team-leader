@@ -148,9 +148,7 @@
                                                 <span class="text-inverse">Remember me</span>
                                             </label>
                                         </div>
-                                        <div class="forgot-phone text-right float-right">
-                                            <a href="auth-reset-password.html" class="text-right f-w-600"> Forgot Password?</a>
-                                        </div>
+                                        
                                     </div>
                                 </div>
                                 <div class="row m-t-30">

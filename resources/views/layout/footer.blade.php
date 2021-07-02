@@ -22,6 +22,11 @@
     <script src="{{asset('files/assets/js/vertical/vertical-layout.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('files/assets/pages/dashboard/custom-dashboard.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('files/assets/js/script.min.js')}}"></script>
-    <script type="text/javascript" src="{{asset('files/bower_components/select2/js/select2.full.min.js')}}"></script>
-    <script type="text/javascript" src="{{asset('files/assets/pages/advance-elements/select2-custom.js')}}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/js/select2.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
+
+    <script type="text/javascript">
+    $(document).ready(function() {
+        $('.select2').select2();
+    });
+    </script>

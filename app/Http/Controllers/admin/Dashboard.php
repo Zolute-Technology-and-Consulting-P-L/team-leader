@@ -13,8 +13,8 @@ use App\CompanyAward;
 class Dashboard extends Controller
 {
     public function index(){
-        $companies = Company::all();
-        $awardes = Award::all();
+        $companies = Company::where('status','0')->get();
+        $awardes = Award::where('status','0')->get();
         $compAwards = CompanyAward::orderBy('created_at','desc')->paginate(10);
         return view('admin.dashboard',compact('companies','awardes','compAwards'));
     }

@@ -1,5 +1,5 @@
 @extends('layout.master')
-@section('title','Create|Award')
+@section('title','Edit|Award')
 
 @section('content')
 
@@ -10,7 +10,7 @@
                             <div class="page-header-title">
                                 <i class="feather icon-clipboard bg-c-blue"></i>
                                 <div class="d-inline">
-                                    <h5>Add New Award</h5>
+                                    <h5>Edit Award</h5>
                                 </div>
                             </div>
                         </div>
@@ -32,12 +32,12 @@
                               <div class="card-header">
                               </div>
                               <div class="card-block">
-                                <form method="post" action="{{route('storeAward')}}" id="createAwardForm">
+                                <form method="post" action="{{route('updateAward')}}" id="updateAwardForm">
                                   <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">Award Name</label>
                                     <div class="col-sm-10">
-                                      <input type="text" class="form-control" name="award_name" id="name" placeholder="Award Name">
-                                      
+                                      <input type="text" class="form-control" name="award_name" value="{{$awardInfo->name}}" id="name" placeholder="Award Name">
+                                      <input type="hidden" value="{{$awardInfo->id}}" name="id">
                                     </div>
                                   </div>
                                   @csrf
@@ -64,12 +64,12 @@
 @section('scripts')
 <script type="text/javascript" src="{{ asset('public/vendor/jsvalidation/js/jsvalidation.js')}}"></script>
 
-{!! JsValidator::formRequest('App\Http\Requests\AwardRequest', '#createAwardForm') !!}
+{!! JsValidator::formRequest('App\Http\Requests\AwardRequest', '#updateAwardForm') !!}
 
 
 <script>
 function validForm(){
-    var awardForm = $('#createAwardForm');
+    var awardForm = $('#updateAwardForm');
     if(awardForm.valid()){
         awardForm.submit();
     }

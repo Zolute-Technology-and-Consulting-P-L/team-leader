@@ -31,16 +31,21 @@ Route::group(['prefix'=>'admin','middleware'=>'authLogin'],function(){
     Route::get('company/create', 'admin\CompanyController@create')->name('createCompany');
     Route::post('company/store', 'admin\CompanyController@store')->name('storeCompany');
     Route::post('company/change-sts', 'admin\CompanyController@changeStatus')->name('changeStsCompany');
-
+    Route::get('company/edit/{any}', 'admin\CompanyController@edit')->name('editCompany');
+    Route::post('company/update', 'admin\CompanyController@update')->name('updateCompany');
     //Awards
     Route::get('awards', 'admin\AwardController@index')->name('awards');
     Route::get('award/create', 'admin\AwardController@create')->name('createAward');
     Route::post('award/store', 'admin\AwardController@store')->name('storeAward');
     Route::post('award/change-sts', 'admin\AwardController@changeStatus')->name('changeStsAward');
+    Route::get('award/edit/{any}', 'admin\AwardController@edit')->name('editAward');
+    Route::post('award/update', 'admin\AwardController@update')->name('updateAward');
     //Assign Award
     Route::post('assign/award', 'admin\CompanyController@assignAward')->name('assignAward');
     Route::post('assign/change-sts', 'admin\CompanyController@assignChangeStatus')->name('changeStsAssignAward');
 
     Route::get('assign/code-download/{assignCode}', 'admin\CompanyController@fileDownload')->name('assignCodeDownload');
+
+    Route::get('assign/logo-authentication/{assignCode}', 'admin\CompanyController@logoAuthtencation')->name('assignLogoAuthentication');
 });
    

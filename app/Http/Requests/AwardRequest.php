@@ -24,7 +24,7 @@ class AwardRequest extends FormRequest
     public function rules()
     {
         return [
-            "award_name" => "required|string|min:4",
+            "award_name" => "required|string|min:4|unique:awards,name,".$this->id,
         ];
     }
 }

@@ -13,7 +13,7 @@ use File;
 class CompanyController extends Controller
 {
     public function index(){
-        $companies = Company::paginate(10);
+        $companies = Company::orderBy('id','desc')->paginate(10);
         return view('admin.company.index',compact('companies'));
     }
 
@@ -29,6 +29,7 @@ class CompanyController extends Controller
             $company->email = $request->email;
             $company->phone = $request->contact_number;
             $company->address = $request->address;
+            $company->website = $request->website;
             $company->save();
             return redirect()->route('companies')->withSuccess('Company has been created succesfully!');
         } catch (\Exception $ex) {
@@ -121,7 +122,7 @@ class CompanyController extends Controller
 
     public function fileDownload($assignCode){
             $data = '<div class="">
-            <a href="'.$assignCode.'"><img src="'.url('/public/upload/logo/company-logo-default.svg').'"/></a>
+            <a href="'.route("assignLogoAuthentication",$assignCode).'"><img src="'.url('/public/upload/logo/company-logo-default.svg').'"/></a>
             </div>';
             $file = time() .rand(). '_file.txt';
             $destinationPath=public_path()."/upload/";
@@ -129,5 +130,40 @@ class CompanyController extends Controller
             File::put($destinationPath.$file,$data);
             return response()->download($destinationPath.$file);
           
+    }
+
+    public function logoAuthtencation($assignCode=null){
+        if($assignCode == null){
+           return redirect()->back();
+        }
+        if(CompanyAward::where('assign_code',$assignCode)->first()){
+           $data['color'] = "#28C20B";
+           $data['title'] = "Logo Veryfied";
+        }else{
+            $data['color'] = "#ff0000";
+            $data['title'] = "Logo is not Veryfied";
+        }
+        return view('admin.website_veryfied',$data);
+    }
+
+    public function edit($id){
+        $compInfo = Company::find(base64_decode($id));
+        return view('admin.company.edit',compact('compInfo'));
+    }
+
+    public function update(CompanyRequest $request){
+        try {
+            
+            $company = Company::where('id',$request->id)->first();
+            $company->name = $request->company_name;
+            $company->email = $request->email;
+            $company->phone = $request->contact_number;
+            $company->address = $request->address;
+            $company->website = $request->website;
+            $company->save();
+            return redirect()->route('companies')->withSuccess('Company has been updated succesfully!');
+        } catch (\Exception $ex) {
+            return redirect()->back()->withError($ex->getMessage());
+        }
     }
 }

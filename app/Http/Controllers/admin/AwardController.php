@@ -11,7 +11,7 @@ use Exception;
 class AwardController extends Controller
 {
     public function index(){
-        $awards = Award::paginate(10);
+        $awards = Award::orderBy('id','desc')->paginate(10);
         return view('admin.award.index',compact('awards'));
     }
     public function create(){
@@ -49,6 +49,24 @@ class AwardController extends Controller
                 'status' => false,
                 'message' => $ex->getMessage()
             ]);
+        }
+    }
+
+    public function edit($id){
+        $awardInfo = Award::find(base64_decode($id));
+        return view('admin.award.edit',compact('awardInfo'));
+    }
+
+    public function update(AwardRequest $request){
+        try {
+            
+            $awardName = $request->award_name;
+            $award = Award::where('id',$request->id)->first();
+            $award->name = $awardName;
+            $award->save();
+            return redirect()->route('awards')->withSuccess('Award has been updated succesfully!');
+        } catch (\Exception $ex) {
+            return redirect()->back()->withError($ex->getMessage());
         }
     }
 }

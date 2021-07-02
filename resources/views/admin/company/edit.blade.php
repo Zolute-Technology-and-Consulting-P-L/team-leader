@@ -1,5 +1,5 @@
 @extends('layout.master')
-@section('title','Create|Company')
+@section('title','Edit|Company')
 
 @section('content')
 
@@ -10,7 +10,7 @@
                             <div class="page-header-title">
                                 <i class="feather icon-clipboard bg-c-blue"></i>
                                 <div class="d-inline">
-                                    <h5>Add New Company</h5>
+                                    <h5>Edit Company</h5>
                                 </div>
                             </div>
                         </div>
@@ -32,18 +32,18 @@
                                 
                               </div>
                               <div class="card-block">
-                                <form method="post" action="{{route('storeCompany')}}" id="createCompanyForm">
+                                <form method="post" action="{{route('updateCompany')}}" id="createCompanyForm">
                                   <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">Company Name</label>
                                     <div class="col-sm-10">
-                                      <input type="text" class="form-control" name="company_name" id="name" placeholder="Company Name">
-                                      
+                                      <input type="text" class="form-control" name="company_name" id="name" value="{{$compInfo->name}}" placeholder="Company Name">
+                                      <input type="hidden" name="id" value="{{$compInfo->id}}">
                                     </div>
                                   </div>
                                   <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">Contact Number</label>
                                     <div class="col-sm-10">
-                                      <input type="text" class="form-control" name="contact_number" placeholder="Contact Number">
+                                      <input type="text" class="form-control" value="{{$compInfo->phone}}" name="contact_number" placeholder="Contact Number">
                                       
                                     </div>
                                   </div>
@@ -51,19 +51,19 @@
                                   <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">Email</label>
                                     <div class="col-sm-10">
-                                      <input type="email" class="form-control" id="email" name="email" placeholder="Enter valid e-mail address">
+                                      <input type="email" class="form-control" value="{{$compInfo->email}}" id="email" name="email" placeholder="Enter valid e-mail address">
                                     </div>
                                   </div>
                                   <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">Web Site</label>
                                     <div class="col-sm-10">
-                                      <input type="text" class="form-control" id="website" name="website" placeholder="https://example.com">
+                                      <input type="text" class="form-control" value="{{$compInfo->website}}" id="website" name="website" placeholder="https://example.com">
                                     </div>
                                   </div>
                                   <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">Address</label>
                                     <div class="col-sm-10">
-                                      <textarea rows="3" name="address" class="form-control" id="address" placeholder="Address"></textarea>
+                                      <textarea rows="3" name="address" class="form-control" id="address" placeholder="Address">{{$compInfo->address}}</textarea>
                                   
                                     </div>
                                   </div>

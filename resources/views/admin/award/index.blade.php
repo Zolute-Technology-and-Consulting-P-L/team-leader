@@ -10,7 +10,7 @@
                             <div class="page-header-title">
                                 <i class="feather icon-inbox bg-c-blue"></i>
                                 <div class="d-inline">
-                                    <h5>Rewards</h5>
+                                    <h5>Awards</h5>
                                 </div>
                             </div>
                         </div>
@@ -27,14 +27,14 @@
                         <!-- DOM/Jquery table start -->
                         <div class="card">
                           <div class="card-header">
-                            <h5>Rewards</h5>
+                            <h5>Awards</h5>
                           </div>
                           <div class="card-block">
                             <div class="table-responsive dt-responsive">
                               <table id="dom-jqry" class="table table-striped table-bordered nowrap">
                                 <thead>
                                   <tr>
-                                    <th>Reward Name</th>
+                                    <th>Award Name</th>
                                     <th>Status</th>
                                     <th>Action</th>
                                   
@@ -49,7 +49,7 @@
                                     <option value="0" {{$v->status == 0 ? 'selected' : ''}}>Active</option>
                                     <option value="1" {{$v->status == 1 ? 'selected' : ''}}>Inactive</option>
                                     </select></td>
-                                    <td><a href="" title="Edit"><i class="fa fa-edit"></i></a>&nbsp;&nbsp; <a href="" title="Delete"><i class="fa fa-trash"></i></a></td>
+                                    <td><a href="{{route('editAward',base64_encode($v->id))}}" title="Edit"><i class="fa fa-edit"></i></a>
                                   </tr>
                                  @endforeach
                                  @endif
