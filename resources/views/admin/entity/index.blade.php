@@ -1,5 +1,5 @@
 @extends('layout.master')
-@section('title','Companies')
+@section('title','Rewards')
 
 @section('content')
 <div class="pcoded-content">
@@ -10,7 +10,7 @@
                             <div class="page-header-title">
                                 <i class="feather icon-inbox bg-c-blue"></i>
                                 <div class="d-inline">
-                                    <h5>Companies</h5>
+                                    <h5>Entities</h5>
                                 </div>
                             </div>
                         </div>
@@ -27,39 +27,31 @@
                         <!-- DOM/Jquery table start -->
                         <div class="card">
                           <div class="card-header">
-                            <h5>Companies</h5>
+                            <h5>Entities</h5>
                           </div>
                           <div class="card-block">
                             <div class="table-responsive dt-responsive">
                               <table id="dom-jqry" class="table table-striped table-bordered nowrap">
                                 <thead>
                                   <tr>
-                                    <th>Company Name</th>
-                                    <th>Entity</th>
-                                    <th>Email</th>
-                                    <th>Contact Number</th>
+                                    <th>Entity Name</th>
                                     <th>Web Site</th>
-                                    <th>Created At</th>
-                                    <th>Status</th>
+                                    <th>Success Page</th>
+                                    <th>Failed Page</th>
                                     <th>Action</th>
                                   
                                   </tr>
                                 </thead>
                                 <tbody>
-                                @if($companies->count() > 0)
-                                @foreach($companies as $key=> $v)
+                                @if($entities->count() > 0)
+                                @foreach($entities as $key => $v)
                                   <tr>
                                     <td>{{$v->name}}</td>
-                                    <td>{{$v->entity->name ?? ''}}</td>
-                                    <td>{{$v->email}}</td>
-                                    <td>{{$v->phone}}</td>
-                                    <td><a target="_blank" href="{{$v->website}}"><i class="ti-hand-point-right"></i>&nbsp;{{$v->website}}</a></td>
-                                    <td>{{date('d M Y',strtotime($v->created_at))}}</td>
-                                    <td><select name="select" id="stsdrop_{{$key}}" onchange="changeSts('{{$v->id}}',this.value,this.id)" class="form-control form-control-{{$v->status == 0 ?'success' : 'danger'}} fill">
-                                    <option value="0" {{$v->status == 0 ? 'selected' : ''}}>Active</option>
-                                    <option value="1" {{$v->status == 1 ? 'selected' : ''}}>Inactive</option>
-                                    </select></td>
-                                    <td><a href="{{route('editCompany',base64_encode($v->id))}}" title="Edit"><i class="fa fa-edit"></i></a></td>
+                                    <td>{{$v->website}}</td>
+                                    <td>{{$v->success_page}}</td>
+                                    <td>{{$v->failed_page}}</td>
+                                    <td><a href="{{route('editEntity',base64_encode($v->id))}}" title="Edit"><i class="fa fa-edit"></i></a>
+                                    <!-- &nbsp;&nbsp;<a href="javascript:void(0)" onclick="deleteConfirm(this)" id="{{$v->id}}" title="Delete"><i class="fa fa-trash"></i></a> -->
                                   </tr>
                                  @endforeach
                                  @endif
@@ -67,25 +59,13 @@
                               </table>
                             </div>
                             <span style="float: right">
-                              @if($companies->count() > 0)
-                              {{$companies->links()}}
+                              @if($entities->count() > 0)
+                              {{$entities->links()}}
                               @endif
                               </span>
                           </div>
                         </div>
                        
-                       
-                     
-                  
-                    
-                        <!-- Row Grouping table end -->
-                        <!-- Footer Callback table start -->
-                      
-                       
-                        <!-- Custom Toolbar Elements end -->
-                        <!-- Row Created Callback table start -->
-                      
-                        <!-- Row Created Callback table end -->
                       </div>
                       <!-- Page-body start -->
                     </div>
@@ -96,12 +76,12 @@
 
 @section('scripts')
 <script>
-function changeSts(companyId,value,id){
+function changeSts(awardId,value,id){
     $.ajax({
-        url: "{{route('changeStsCompany')}}",
+        url: "{{route('changeStsAward')}}",
         type: "POST",
         dataType:"JSON",
-        data: {"company_id":companyId,"value":value,"_token":"{{csrf_token()}}"},
+        data: {"award_id":awardId,"value":value,"_token":"{{csrf_token()}}"},
         success:function(res){
             if(res.status == true){
                 if(value == 0){
@@ -113,8 +93,17 @@ function changeSts(companyId,value,id){
             }else{
                 toastr.error(res.message);
             }
+        },
+        error:function(error){
+          toastr.error('Something went wrong!');
         }
     });
+}
+
+function deleteConfirm(elem){
+  if(confirm('Are sure want to delete ?')){
+    elem.href = "{{url('admin/entity/delete/')}}"+'/'+elem.id;
+  }
 }
 </script>
 @endsection

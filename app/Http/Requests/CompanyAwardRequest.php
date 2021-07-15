@@ -25,7 +25,9 @@ class CompanyAwardRequest extends FormRequest
     {
         return [
             "company" => "required",
-            "award" => "required"
+            "award" => "required",
+            "entity" => "required",
+            "end_date" => "required"
         ];
     }
 }

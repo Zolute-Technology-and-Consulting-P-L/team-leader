@@ -28,7 +28,8 @@ class CompanyRequest extends FormRequest
             "email" => "required|unique:companies,email,".$this->id,
             "contact_number" => "required|regex:/^([0-9\s\-\+\(\)]*)$/|digits:10|unique:companies,phone,".$this->id,
             "website" => "required|url",
-            "address" => "required|string"
+            "address" => "required|string",
+            "entity" => "required"
 
         ];
     }

@@ -5,7 +5,9 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\AwardRequest;
+use App\Http\Requests\EditAwardRequest;
 use App\Award;
+use App\Entity;
 use Exception;
 
 class AwardController extends Controller
@@ -15,7 +17,8 @@ class AwardController extends Controller
         return view('admin.award.index',compact('awards'));
     }
     public function create(){
-        return view('admin.award.create');
+        $entities = Entity::all();
+        return view('admin.award.create',compact('entities'));
     }
 
     public function store(AwardRequest $request){
@@ -25,6 +28,12 @@ class AwardController extends Controller
             $awardName = $request->award_name;
             $award = new Award;
             $award->name = $awardName;
+            $award->entity_id = $request->entity;
+            if($file = $request->file('award_logo')){
+                $logoName = $awardName.'-'.time().'.'.$file->extension();
+                $file->move(public_path('award/logo'), $logoName);
+                $award->award_logo = $logoName;
+            }
             $award->save();
             return redirect()->route('awards')->withSuccess('Award has been created succesfully!');
         } catch (\Exception $ex) {
@@ -54,15 +63,22 @@ class AwardController extends Controller
 
     public function edit($id){
         $awardInfo = Award::find(base64_decode($id));
-        return view('admin.award.edit',compact('awardInfo'));
+        $entities = Entity::all();
+        return view('admin.award.edit',compact('awardInfo','entities'));
     }
 
-    public function update(AwardRequest $request){
+    public function update(EditAwardRequest $request){
         try {
             
             $awardName = $request->award_name;
             $award = Award::where('id',$request->id)->first();
             $award->name = $awardName;
+            $award->entity_id = $request->entity;
+            if($file = $request->file('award_logo')){
+                $logoName = $awardName.'-'.time().'.'.$file->extension();
+                $file->move(public_path('award/logo'), $logoName);
+                $award->award_logo = $logoName;
+            }
             $award->save();
             return redirect()->route('awards')->withSuccess('Award has been updated succesfully!');
         } catch (\Exception $ex) {

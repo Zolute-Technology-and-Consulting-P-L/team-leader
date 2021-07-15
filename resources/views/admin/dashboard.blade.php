@@ -44,29 +44,42 @@
                               <div class="card-block">
                                 <form id="CompanyAwardForm" action="{{route('assignAward')}}" method="post" novalidate="">
                                 @csrf
-                                  <div class="form-group row">
-                                    <label class="col-sm-2 col-form-label">Company</label>
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">Entity</label>
                                     <div class="col-sm-10">
-                                      <select name="company" class="form-control select2">
-                                      <option value="">Select Company</option>
-                                      @foreach($companies as $v)
+                                      <select name="entity" class="form-control select2" onchange="getEntityData(this.value)">
+                                      <option value="">Select Entity</option>
+                                      @foreach($entities as $v)
                                       <option value="{{$v->id}}">{{$v->name}}</option>
                                       @endforeach
                                       </select>
                                     </div>
                                   </div>
                                   <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">Company</label>
+                                    <div class="col-sm-10">
+                                      <select name="company" class="form-control select2">
+                                      <option value="">Select Company</option>
+                                     
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">Award</label>
                                     <div class="col-sm-10">
-                                    <select name="award" class="form-control select2">
+                                    <select name="award"  class="form-control select2">
                                       <option value="">Select Award</option>
-                                      @foreach($awardes as $v)
-                                      <option value="{{$v->id}}">{{$v->name}}</option>
-                                      @endforeach
                                       </select>
                                       <span class="messages popover-valid"></span>
                                     </div>
-                                  </div><br>
+                                  </div>
+                                  <div class="form-group row">
+                                  <label class="col-sm-2 col-form-label">End Date</label>
+                                  <div class="col-sm-10">
+                                    <input class="form-control" type="date" name="end_date" value="{{date('Y-m-d',strtotime('+ 1 Years'))}}">
+                                  </div>
+                                  </div>
+                                  <br>
                                   <div class="row">
                                     <label class="col-sm-2"></label>
                                     <div class="col-sm-10">
@@ -90,8 +103,10 @@
                               <table id="dom-jqry" class="table table-striped table-bordered nowrap">
                                 <thead>
                                   <tr>
+                                    <th>Entity</th>
                                     <th>Company Name</th>
                                     <th>Award Name</th>
+                                    <th>End Date</th>
                                     <th>Status</th>
                                     <th>Action</th>
                                   
@@ -101,13 +116,15 @@
                                 @if($compAwards->count() > 0)
                                 @foreach($compAwards as $key => $v)
                                   <tr>
+                                    <td>{{$v->entity->name ?? ''}}</td>
                                     <td>{{$v->company->name}}</td>
                                     <td>{{$v->award->name}}</td>
+                                    <td>{{!empty($v->end_date) ? date('d M Y',strtotime($v->end_date)): ''}}</td>
                                     <td><select name="select" id="stsdrop_{{$key}}" onchange="assignChangeSts('{{$v->id}}',this.value,this.id)" class="form-control form-control-{{$v->status == 0 ?'success' : 'danger'}} fill">
                                     <option value="0" {{$v->status == 0 ? 'selected' : ''}}>Active</option>
                                     <option value="1" {{$v->status == 1 ? 'selected' : ''}}>Inactive</option>
                                     </select></td>
-                                    <td><a href="{{route('assignCodeDownload',$v->assign_code)}}" title="Download Logo Code"><i class="fa fa-download"></i></a></td>
+                                    <td><a href="{{route('assignCodeDownload',$v->id)}}" title="Download Logo Code"><i class="fa fa-download"></i></a></td>
                                   </tr>
                                  @endforeach
                                  @endif
@@ -164,6 +181,30 @@ function validForm(){
             }else{
                 toastr.error(res.message);
             }
+        }
+    });
+}
+
+function getEntityData(id){
+  getCompanyOption(id);
+  getAwardOption(1);
+}
+
+function getCompanyOption(id){
+  $.ajax({
+        url: "{{url('admin/entity/companies')}}/"+id,
+        type: "GET",
+        success:function(res){
+          $("select[name='company']").html(res);
+        }
+    });
+}
+function getAwardOption(id){
+  $.ajax({
+        url: "{{url('admin/entity/award')}}/"+id,
+        type: "GET",
+        success:function(res){
+            $("select[name='award']").html(res);
         }
     });
 }

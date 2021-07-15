@@ -33,6 +33,20 @@
                               </div>
                               <div class="card-block">
                                 <form method="post" action="{{route('storeCompany')}}" id="createCompanyForm">
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">Select Entity</label>
+                                    <div class="col-sm-10">
+                                      <select name="entity" class="form-control select2">
+                                        <option value="">Select Entity</option>
+                                        @if($entities->count() > 0)
+                                        @foreach($entities as $v)
+                                        <option value="{{$v->id}}">{{$v->name}}</option>
+                                        @endforeach
+                                        @endif
+                                      </select>
+                                      
+                                    </div>
+                                  </div>
                                   <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">Company Name</label>
                                     <div class="col-sm-10">
@@ -40,6 +54,7 @@
                                       
                                     </div>
                                   </div>
+                                 
                                   <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">Contact Number</label>
                                     <div class="col-sm-10">

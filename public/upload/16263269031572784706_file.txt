@@ -1,0 +1,3 @@
+<div class="">
+            <a target="_blank" href="http://localhost/team-leader/admin/assign/logo-authentication/ZJgnSEJDpHoNazVeTNfEcVgz5Tq0iZw5MyO3JPvA56jUFqbcqYlQE5ueqURMmAsJWHVHf5ZJYTkn8X6R"><img src="http://localhost/team-leader/public/award/logo/"/></a>
+            </div>

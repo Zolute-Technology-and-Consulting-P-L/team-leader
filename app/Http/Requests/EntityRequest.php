@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class AwardRequest extends FormRequest
+class EntityRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,9 +24,10 @@ class AwardRequest extends FormRequest
     public function rules()
     {
         return [
-            "award_name" => "required|string|min:4|unique:awards,name,".$this->id,
-            "entity" => "required",
-            "award_logo" => "required|mimes:jpg,jpeg,png",
+            "entity_name" => "required|string|min:4|unique:entity,name,".$this->id,
+            "website" => "required|url",
+            "success_url" => "required|url",
+            "failed_url" => "required|url",
         ];
     }
 }

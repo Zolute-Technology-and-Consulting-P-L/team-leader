@@ -14,6 +14,28 @@
                                         </a>
                                     
                                     </li>
+                                    <li class="pcoded-hasmenu @if((request()->is('admin/entities')) || (request()->is('admin/entity/create'))) active pcoded-trigger @endif">
+                                        <a href="javascript:void(0)" class="waves-effect waves-dark">
+        									<span class="pcoded-micon">
+                                            <i class="fa fa-building"></i>
+        									</span>
+                                            <span class="pcoded-mtext">Entities</span>
+                                           
+                                        </a>
+                                        <ul class="pcoded-submenu">
+                                            <li class="{{(request()->is('admin/entities')) ? 'active' : '' }}">
+                                                <a href="{{route('entityList')}}" class="waves-effect waves-dark">
+                                                    <span class="pcoded-mtext">Entity List</span>
+                                                </a>
+                                            </li>
+                                            <li class="{{ (request()->is('admin/entity/create')) ? 'active' : '' }}">
+                                                <a href="{{route('entityCreate')}}" class="waves-effect waves-dark">
+                                                    <span class="pcoded-mtext">Create Entity</span>
+                                                </a>
+                                            </li>
+                                          
+                                        </ul>
+                                    </li>
                                     <li class="pcoded-hasmenu @if((request()->is('admin/companies')) || (request()->is('admin/company/create'))) active pcoded-trigger @endif">
                                         <a href="javascript:void(0)" class="waves-effect waves-dark">
         									<span class="pcoded-micon">

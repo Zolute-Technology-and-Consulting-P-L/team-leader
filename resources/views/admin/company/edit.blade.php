@@ -33,6 +33,17 @@
                               </div>
                               <div class="card-block">
                                 <form method="post" action="{{route('updateCompany')}}" id="createCompanyForm">
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">Entity</label>
+                                    <div class="col-sm-10">
+                                      <select name="entity" class="form-control select2">
+                                        <option value="">Select Entity</option>
+                                        @foreach($entities as $v)
+                                        <option value="{{$v->id}}" {{$v->id == $compInfo->entity_id ? 'selected':''}}>{{$v->name}}</option>
+                                        @endforeach
+                                      </select>
+                                    </div>
+                                  </div>
                                   <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">Company Name</label>
                                     <div class="col-sm-10">

@@ -44,8 +44,18 @@ Route::group(['prefix'=>'admin','middleware'=>'authLogin'],function(){
     Route::post('assign/award', 'admin\CompanyController@assignAward')->name('assignAward');
     Route::post('assign/change-sts', 'admin\CompanyController@assignChangeStatus')->name('changeStsAssignAward');
 
-    Route::get('assign/code-download/{assignCode}', 'admin\CompanyController@fileDownload')->name('assignCodeDownload');
+    Route::get('assign/code-download/{id}', 'admin\CompanyController@fileDownload')->name('assignCodeDownload');
 
     Route::get('assign/logo-authentication/{assignCode}', 'admin\CompanyController@logoAuthtencation')->name('assignLogoAuthentication');
+
+    //Entity Master
+    Route::get('entities', 'admin\EntityController@index')->name('entityList');
+    Route::get('entity/create', 'admin\EntityController@create')->name('entityCreate');
+    Route::post('entity/store', 'admin\EntityController@store')->name('entityStore');
+    Route::get('entity/edit/{id}', 'admin\EntityController@edit')->name('editEntity');
+    Route::get('entity/delete/{id}', 'admin\EntityController@delete')->name('deleteEntity');
+
+    Route::get('entity/companies/{id}', 'admin\EntityController@companyOption')->name('getEntityData');
+    Route::get('entity/award/{id}', 'admin\EntityController@awardOption')->name('awardOption');
 });
    

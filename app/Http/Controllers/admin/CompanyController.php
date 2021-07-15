@@ -8,6 +8,8 @@ use App\Http\Requests\CompanyRequest;
 use App\Http\Requests\CompanyAwardRequest;
 use App\Company;
 use App\CompanyAward;
+use App\Entity;
+use App\Award;
 use File;
 
 class CompanyController extends Controller
@@ -18,7 +20,8 @@ class CompanyController extends Controller
     }
 
     public function create(){
-        return view('admin.company.create');
+        $entities = Entity::all();
+        return view('admin.company.create',compact('entities'));
     }
 
     public function store(CompanyRequest $request){
@@ -30,6 +33,7 @@ class CompanyController extends Controller
             $company->phone = $request->contact_number;
             $company->address = $request->address;
             $company->website = $request->website;
+            $company->entity_id = $request->entity;
             $company->save();
             return redirect()->route('companies')->withSuccess('Company has been created succesfully!');
         } catch (\Exception $ex) {
@@ -41,9 +45,12 @@ class CompanyController extends Controller
 
         try {
             $assignTo = new CompanyAward;
+            $assignTo->entity_id = $request->entity;
             $assignTo->company_id = $request->company;
             $assignTo->award_id = $request->award;
             $assignTo->assign_code = $this->getCode(80);
+            $assignTo->start_date = date('Y-m-d');
+            $assignTo->end_date = date('Y-m-d',strtotime($request->end_date));
             $assignTo->save();
             return redirect()->route('dashboard')->withSuccess('Assigned Successfull!');
         } catch (\Exception $ex) {
@@ -120,11 +127,13 @@ class CompanyController extends Controller
         }
     }
 
-    public function fileDownload($assignCode){
+    public function fileDownload($id){
+            $assignAward = CompanyAward::find($id);
+            $award = Award::find($assignAward->award_id);
             $data = '<div class="">
-            <a target="_blank" href="'.route("assignLogoAuthentication",$assignCode).'"><img src="'.url('/public/upload/logo/company-logo-default.svg').'"/></a>
+            <a target="_blank" href="'.route("assignLogoAuthentication",$assignAward->assign_code).'"><img src="'.$award->award_logo.'"/></a>
             </div>';
-            $file = time() .rand(). '_file.txt';
+            $file = $assignAward->company->name.'-'.time(). '.txt';
             $destinationPath=public_path()."/upload/";
             if (!is_dir($destinationPath)) {  mkdir($destinationPath,0777,true);  }
             File::put($destinationPath.$file,$data);
@@ -136,19 +145,29 @@ class CompanyController extends Controller
         if($assignCode == null){
            return redirect()->back();
         }
-        if(CompanyAward::where('assign_code',$assignCode)->first()){
-           $data['color'] = "#28C20B";
-           $data['title'] = "Logo Veryfied";
+        $currentDate = date('Y-m-d');
+        if($assignAward =  CompanyAward::where('assign_code',$assignCode)->where('end_date','>=', $currentDate)->first()){
+            $entityId = $assignAward->entity_id;
+            if($entityD = Entity::where('id',$entityId)->first()){
+                return redirect($entityD->success_page);
+            }else if($entityD = Entity::find($entityId)){
+                return redirect($entityD->failed_page);
+            }
+        }else if($assignAward =  CompanyAward::where('assign_code',$assignCode)->first()){
+            $entityId = $assignAward->entity_id;
+            $entityD = Entity::find($entityId);
+            return redirect($entityD->failed_page);
         }else{
             $data['color'] = "#ff0000";
             $data['title'] = "Logo is not Veryfied";
+            return view('admin.website_veryfied',$data);
         }
-        return view('admin.website_veryfied',$data);
     }
 
     public function edit($id){
         $compInfo = Company::find(base64_decode($id));
-        return view('admin.company.edit',compact('compInfo'));
+        $entities = Entity::all();
+        return view('admin.company.edit',compact('compInfo','entities'));
     }
 
     public function update(CompanyRequest $request){
@@ -160,6 +179,7 @@ class CompanyController extends Controller
             $company->phone = $request->contact_number;
             $company->address = $request->address;
             $company->website = $request->website;
+            $company->entity_id = $request->entity;
             $company->save();
             return redirect()->route('companies')->withSuccess('Company has been updated succesfully!');
         } catch (\Exception $ex) {

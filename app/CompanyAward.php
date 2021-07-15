@@ -15,4 +15,7 @@ class CompanyAward extends Model
     public function award(){
         return $this->belongsTo('App\Award','award_id');
     }
+    public function entity(){
+        return $this->belongsTo('App\Entity','entity_id');
+    }
 }

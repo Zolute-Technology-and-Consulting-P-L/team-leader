@@ -35,6 +35,7 @@
                                 <thead>
                                   <tr>
                                     <th>Award Name</th>
+                                    <th>Entity</th>
                                     <th>Status</th>
                                     <th>Action</th>
                                   
@@ -45,6 +46,7 @@
                                 @foreach($awards as $key => $v)
                                   <tr>
                                     <td>{{$v->name}}</td>
+                                    <td>{{$v->entity->name ?? ''}}</td>
                                     <td><select name="select" id="stsdrop_{{$key}}" onchange="changeSts('{{$v->id}}',this.value,this.id)" class="form-control form-control-{{$v->status == 0 ?'success' : 'danger'}} fill">
                                     <option value="0" {{$v->status == 0 ? 'selected' : ''}}>Active</option>
                                     <option value="1" {{$v->status == 1 ? 'selected' : ''}}>Inactive</option>
