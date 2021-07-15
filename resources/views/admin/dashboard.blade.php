@@ -187,7 +187,7 @@ function validForm(){
 
 function getEntityData(id){
   getCompanyOption(id);
-  getAwardOption(1);
+  getAwardOption(id);
 }
 
 function getCompanyOption(id){
