@@ -15,7 +15,7 @@ use File;
 class CompanyController extends Controller
 {
     public function index(){
-        $companies = Company::orderBy('id','desc')->paginate(10);
+        $companies = Company::orderBy('id','desc')->get();
         return view('admin.company.index',compact('companies'));
     }
 

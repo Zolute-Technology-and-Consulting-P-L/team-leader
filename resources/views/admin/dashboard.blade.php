@@ -100,7 +100,7 @@
                           </div>
                           <div class="card-block">
                             <div class="table-responsive dt-responsive">
-                              <table id="dom-jqry" class="table table-striped table-bordered nowrap">
+                              <table id="dom-table" class="table table-striped table-bordered nowrap">
                                 <thead>
                                   <tr>
                                     <th>Entity</th>
@@ -131,11 +131,7 @@
                                 </tbody>
                               </table>
                             </div>
-                            <span style="float: right">
-                              @if($compAwards->count() > 0)
-                              {{$compAwards->links()}}
-                              @endif
-                              </span>
+                           
                           </div>
                         </div>
                         </div>

@@ -16,7 +16,7 @@ class Dashboard extends Controller
     public function index(){
         $companies = Company::where('status','0')->get();
         $awardes = Award::where('status','0')->get();
-        $compAwards = CompanyAward::orderBy('created_at','desc')->paginate(10);
+        $compAwards = CompanyAward::orderBy('created_at','desc')->get();
         $entities = Entity::all();
         return view('admin.dashboard',compact('companies','awardes','compAwards','entities'));
     }

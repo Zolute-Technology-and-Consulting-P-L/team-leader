@@ -13,7 +13,7 @@ use Exception;
 class AwardController extends Controller
 {
     public function index(){
-        $awards = Award::orderBy('id','desc')->paginate(10);
+        $awards = Award::orderBy('id','desc')->get();
         return view('admin.award.index',compact('awards'));
     }
     public function create(){

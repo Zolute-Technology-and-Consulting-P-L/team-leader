@@ -13,7 +13,7 @@ use App\Company;
 class EntityController extends Controller
 {
     public function index(Request $request){
-        $entities = Entity::orderBY('id','desc')->paginate(10);
+        $entities = Entity::orderBY('id','desc')->get();
         return view('admin.entity.index',compact('entities'));
     }
 

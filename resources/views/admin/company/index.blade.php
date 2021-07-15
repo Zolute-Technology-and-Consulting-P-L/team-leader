@@ -31,7 +31,7 @@
                           </div>
                           <div class="card-block">
                             <div class="table-responsive dt-responsive">
-                              <table id="dom-jqry" class="table table-striped table-bordered nowrap">
+                              <table id="dom-table" class="table table-striped table-bordered nowrap">
                                 <thead>
                                   <tr>
                                     <th>Company Name</th>
@@ -66,11 +66,7 @@
                                 </tbody>
                               </table>
                             </div>
-                            <span style="float: right">
-                              @if($companies->count() > 0)
-                              {{$companies->links()}}
-                              @endif
-                              </span>
+                          
                           </div>
                         </div>
                        
