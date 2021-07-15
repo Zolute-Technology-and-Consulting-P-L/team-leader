@@ -106,6 +106,7 @@
                                     <th>Entity</th>
                                     <th>Company Name</th>
                                     <th>Award Name</th>
+                                    <th>Start Date</th>
                                     <th>End Date</th>
                                     <th>Status</th>
                                     <th>Action</th>
@@ -119,6 +120,7 @@
                                     <td>{{$v->entity->name ?? ''}}</td>
                                     <td>{{$v->company->name}}</td>
                                     <td>{{$v->award->name}}</td>
+                                    <td>{{date('d M Y',strtotime($v->created_at))}}</td>
                                     <td>{{!empty($v->end_date) ? date('d M Y',strtotime($v->end_date)): ''}}</td>
                                     <td><select name="select" id="stsdrop_{{$key}}" onchange="assignChangeSts('{{$v->id}}',this.value,this.id)" class="form-control form-control-{{$v->status == 0 ?'success' : 'danger'}} fill">
                                     <option value="0" {{$v->status == 0 ? 'selected' : ''}}>Active</option>

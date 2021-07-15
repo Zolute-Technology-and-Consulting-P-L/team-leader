@@ -164,6 +164,12 @@ class CompanyController extends Controller
         }
     }
 
+    public function testPage(){
+        $data['color'] = "#ff0000";
+        $data['title'] = "Logo is not Veryfied";
+        return view('admin.website_veryfied',$data);
+    }
+
     public function edit($id){
         $compInfo = Company::find(base64_decode($id));
         $entities = Entity::all();

@@ -47,6 +47,8 @@ Route::group(['prefix'=>'admin','middleware'=>'authLogin'],function(){
     Route::get('assign/code-download/{id}', 'admin\CompanyController@fileDownload')->name('assignCodeDownload');
 
     Route::get('assign/logo-authentication/{assignCode}', 'admin\CompanyController@logoAuthtencation')->name('assignLogoAuthentication');
+    Route::get('assign/page', 'admin\CompanyController@testPage');
+    
 
     //Entity Master
     Route::get('entities', 'admin\EntityController@index')->name('entityList');
