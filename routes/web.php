@@ -18,12 +18,12 @@ Route::get('/', function () {
 });
 
 Route::group(['prefix'=>'admin'],function(){
-    Route::get('/login', 'admin\login@index')->name('login');
-    Route::post('/authentication','admin\login@authentication')->name('authentication');
+    Route::get('/login', 'admin\Login@index')->name('login');
+    Route::post('/authentication','admin\Login@authentication')->name('authentication');
 });
 Route::group(['prefix'=>'admin','middleware'=>'authLogin'],function(){
-    Route::get('/', 'admin\dashboard@index')->name('dashboard');
-    Route::get('/logout', 'admin\dashboard@logout')->name('logout');
+    Route::get('/', 'admin\Dashboard@index')->name('dashboard');
+    Route::get('/logout', 'admin\Dashboard@logout')->name('logout');
 
 
     //Company
