@@ -9,7 +9,7 @@ class Award extends Model
     protected $table = 'awards';
 
     function entity(){
-        return $this->belongsTo('App\entity','entity_id');
+        return $this->belongsTo('App\Entity','entity_id');
     }
 
     function getAwardLogoAttribute($value){
