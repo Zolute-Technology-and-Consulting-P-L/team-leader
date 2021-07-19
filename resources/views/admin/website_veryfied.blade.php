@@ -23,6 +23,9 @@
             
             font-weight: bolder;
         }
+        .bussiness_name{
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
@@ -37,19 +40,19 @@
     <img src="http://localhost/team-leader/public/award/logo/IIFA Award-1626327382.jpg" id="award_logo" alt="Award Logo">
     </div>
     <div class="col-sm-6 text-left">
-     <p class="paragraph">We, at British Service Awards, recognises <span class="bussiness_name"></span> to meet our quality standard <a style="text-decoration:none" href="https://britishserviceawards.co.uk">britishserviceawards.co.uk</a></p>
+     <p class="paragraph">We, at British Service Awards, recognises <span class="bussiness_name"></span> to meet our quality standard <a style="text-decoration:none" id="entity_web" href="https://britishserviceawards.co.uk">britishserviceawards.co.uk</a></p>
     <p class="paragraph">According to our records,  <span class="bussiness_name"></span> operates the website <span id="bussiness_link"></span></p>
     </div>
     </div>
     <div class="row">
      <div class="col-sm-12 text-right" style="margin-top:40px;">
-<a id="HyperLinkDomain" class="btn btn-info" href="">RETURN TO VERIFIED WEBSITE</a>
+<a id="HyperLinkDomain" class="btn btn-info" href="{{}}">RETURN TO VERIFIED WEBSITE</a>
 </div>
     </div>
     <hr>
    <div class="row">
     
-        <h3 class="heading">Verified By British Service Awards</h3><br>
+        <h3 class="heading">Verified By <span id="entity_name"></span></h3><br>
         <p class="paragraph">You deserve only the best! That’s it! We have verified businesses that achieve excellence. We look at a wide range of factors to verify this. </p>
     
 </div>
@@ -70,6 +73,16 @@ if(param['web'] !=undefined){
 let web = window.atob(param['web']);
 	var link = '<a href="'+web+'" style="text-decoration:none;">'+web+'</a>';
     $("#bussiness_link").html(link);
+    $("#bussiness_link").attr('href', link);
+}
+if(param['entity'] != undefined){
+let entity = window.atob(param['entity']);
+    $("#entity_name").html(entity);
+}
+if(param['entity_web'] != undefined){
+let entityWeb = window.atob(param['entity_web']);
+    $("#entity_web").attr('href',entityWeb);
+    $("#entity_web").text(entityWeb);
 }
 });
 function getUrlVars()

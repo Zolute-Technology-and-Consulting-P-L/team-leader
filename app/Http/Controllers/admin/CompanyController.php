@@ -148,13 +148,6 @@ class CompanyController extends Controller
         $currentDate = date('Y-m-d');
         if($assignAward =  CompanyAward::where('assign_code',$assignCode)->where('end_date','>=', $currentDate)->first()){
             return view('admin.redirect_success',compact('assignAward'));
-            $entityId = $assignAward->entity_id;
-            $logo = $assignAward->award->award_logo;
-            $encLogo = base64_encode($logo);
-            $encCompany = base64_encode($assignAward->company->name);
-            $encWebsite = base64_encode($assignAward->company->website);
-            return redirect()->away($assignAward->entity->success_page.'?logo='.$encLogo.'&bussiness='.$encCompany.'&web='.$encWebsite);
-           
         }else if($assignAward =  CompanyAward::where('assign_code',$assignCode)->first()){
             $entityId = $assignAward->entity_id;
             $entityD = Entity::find($entityId);
