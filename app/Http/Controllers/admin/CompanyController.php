@@ -129,6 +129,9 @@ class CompanyController extends Controller
 
     public function fileDownload($id){
             $assignAward = CompanyAward::find($id);
+            if($assignAward->status == 1){
+                return redirect()->back()->withError('Assign Logo is unveryfied!');
+            }
             $award = Award::find($assignAward->award_id);
             $data = '<div class="">
             <a target="_blank" href="'.route("assignLogoAuthentication",$assignAward->assign_code).'"><img src="'.$award->award_logo.'"/></a>
@@ -146,23 +149,15 @@ class CompanyController extends Controller
            return redirect()->back();
         }
         $currentDate = date('Y-m-d');
-        if($assignAward =  CompanyAward::where('assign_code',$assignCode)->where('end_date','>=', $currentDate)->first()){
+        if($assignAward =  CompanyAward::where('assign_code',$assignCode)->where('end_date','>=', $currentDate)->where('status',0)->first()){
             return view('admin.redirect_success',compact('assignAward'));
         }else if($assignAward =  CompanyAward::where('assign_code',$assignCode)->first()){
             $entityId = $assignAward->entity_id;
             $entityD = Entity::find($entityId);
             return redirect($entityD->failed_page);
         }else{
-            $data['color'] = "#ff0000";
-            $data['title'] = "Logo is not Veryfied";
-            return view('admin.website_veryfied',$data);
+            return "<center><h1 style='color:#ff0000;'>Logo is not Veryfied!</h1></center>";
         }
-    }
-
-    public function testPage(){
-        $data['color'] = "#ff0000";
-        $data['title'] = "Logo is not Veryfied";
-        return view('admin.website_veryfied',$data);
     }
 
     public function edit($id){
