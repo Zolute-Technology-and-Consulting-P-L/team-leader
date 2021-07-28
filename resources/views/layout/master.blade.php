@@ -85,7 +85,9 @@
         toastr.success("{{ Session::get('success') }}");
         </script>
     @endif
-  
+  <footer>
+      <center><small>Designed & Developed By <a target="_blank" href="https://zolute.com/"><small>Zolute</small></a></small></center>
+  </footer>
 </body>
 
 </html>
