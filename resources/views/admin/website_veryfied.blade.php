@@ -47,7 +47,7 @@
     <p class="paragraph">You deserve only the best! That’s it! We have verified businesses that achieve excellence. We look at a wide range of factors to verify this. </p>
     <br>
     <div class="text-right">
-    <a id="HyperLinkDomain" class="btn btn-info" href="{{}}">RETURN TO VERIFIED WEBSITE</a>
+    <a id="HyperLinkDomain" class="btn btn-info" href="">RETURN TO VERIFIED WEBSITE</a>
     </div>    
 </div>
    
@@ -69,7 +69,8 @@ let web = window.atob(param['web']);
 	var link = '<a href="'+web+'" style="text-decoration:none;">'+web+'</a>';
     $("#bussiness_link").html(link);
     $("#bussiness_link").attr('href', link);
-    $("#HyperLinkDomain").attr('href',link);
+    $("#HyperLinkDomain").attr('href',web);
+
 }
 if(param['entity'] != undefined){
 let entity = window.atob(param['entity']);
