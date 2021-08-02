@@ -40,10 +40,10 @@
     <div class="container">
 <div class="col-md-6 text-left">
   <h1 class="heading">Website Verified</h1>
-    <p class="paragraph">We, at British Service Awards, recognises <span class="bussiness_name"></span> to meet our quality standard <a style="text-decoration:none" id="entity_web" href="https://britishserviceawards.co.uk">britishserviceawards.co.uk</a></p>
+    <p class="paragraph">We, at <span class="entity_name">British Service Awards</span>, recognises <span class="bussiness_name"></span> to meet our quality standard <a style="text-decoration:none" id="entity_web" href="https://britishserviceawards.co.uk">britishserviceawards.co.uk</a></p>
     <p class="paragraph">According to our records,  <span class="bussiness_name"></span> operates the website <span style="color:white" id="bussiness_link"></span></p>
     <br></hr>
-    <h1 class="">Verified By <span id="entity_name"></span></h3><br>
+    <h1 class="">Verified By <span class="entity_name"></span></h3><br>
     <p class="paragraph">You deserve only the best! That’s it! We have verified businesses that achieve excellence. We look at a wide range of factors to verify this. </p>
     <br>
     <div class="text-right">
@@ -74,7 +74,7 @@ let web = window.atob(param['web']);
 }
 if(param['entity'] != undefined){
 let entity = window.atob(param['entity']);
-    $("#entity_name").html(entity);
+    $(".entity_name").html(entity);
 }
 if(param['entity_web'] != undefined){
 let entityWeb = window.atob(param['entity_web']);

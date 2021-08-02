@@ -40,13 +40,11 @@
     <div class="container">
 <div class="col-md-6 text-left">
   <h1 class="heading">Website Not Verified</h1>
-    
     <br>
     <div class="text-right">
     <a id="entity_web" class="btn btn-info" href="">RETURN TO <span id="entity_name"></span></a>
     </div>    
-</div>
-   
+    </div>
     </div>
   </div>
 <script>
