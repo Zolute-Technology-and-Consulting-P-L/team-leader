@@ -154,9 +154,9 @@ class CompanyController extends Controller
         }else if($assignAward =  CompanyAward::where('assign_code',$assignCode)->first()){
             $entityId = $assignAward->entity_id;
             $entityD = Entity::find($entityId);
-            return redirect($entityD->failed_page);
+            return view('admin.redirect_fail',compact('assignAward'));
         }else{
-            return "<center><h1 style='color:#ff0000;'>Logo is not Veryfied!</h1></center>";
+            return "<center><h1 style='color:#ff0000;'>Website is not Veryfied!</h1></center>";
         }
     }
 
@@ -181,5 +181,9 @@ class CompanyController extends Controller
         } catch (\Exception $ex) {
             return redirect()->back()->withError($ex->getMessage());
         }
+    }
+
+    public function testPage(){
+        return view('admin.website_veryfied');
     }
 }

@@ -15,13 +15,19 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <style>
-        .jumbotron p{
-            text-align: !important justify;
-            font-size: !important 12px;
+        body{
+            background-image:url('http://localhost/team-leader/public/award/logo/red-glitter-sand-texture-on-black-abstract-backgro-PATLLXH.jpg');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: relative;
+            color:white; 
+            font-family:cursive;  
         }
         .heading{
             
             font-weight: bolder;
+            font-size:50px;
         }
         .bussiness_name{
             font-weight: bold;
@@ -29,33 +35,22 @@
     </style>
 </head>
 <body>
-
-<div class="jumbotron">
+<div class="row">
+    <br>
     <div class="container">
-<div class="text-center">
+<div class="col-md-6 text-left">
   <h1 class="heading">Website Verified</h1>
-</div><br>
-  <div class="row">
-    <div class="col-sm-6 text-right">
-    <img src="http://localhost/team-leader/public/award/logo/IIFA Award-1626327382.jpg" id="award_logo" alt="Award Logo">
-    </div>
-    <div class="col-sm-6 text-left">
-     <p class="paragraph">We, at British Service Awards, recognises <span class="bussiness_name"></span> to meet our quality standard <a style="text-decoration:none" id="entity_web" href="https://britishserviceawards.co.uk">britishserviceawards.co.uk</a></p>
-    <p class="paragraph">According to our records,  <span class="bussiness_name"></span> operates the website <span id="bussiness_link"></span></p>
-    </div>
-    </div>
-    <div class="row">
-     <div class="col-sm-12 text-right" style="margin-top:40px;">
-<a id="HyperLinkDomain" class="btn btn-info" href="{{}}">RETURN TO VERIFIED WEBSITE</a>
+    <p class="paragraph">We, at British Service Awards, recognises <span class="bussiness_name"></span> to meet our quality standard <a style="text-decoration:none" id="entity_web" href="https://britishserviceawards.co.uk">britishserviceawards.co.uk</a></p>
+    <p class="paragraph">According to our records,  <span class="bussiness_name"></span> operates the website <span style="color:white" id="bussiness_link"></span></p>
+    <br></hr>
+    <h1 class="">Verified By <span id="entity_name"></span></h3><br>
+    <p class="paragraph">You deserve only the best! That’s it! We have verified businesses that achieve excellence. We look at a wide range of factors to verify this. </p>
+    <br>
+    <div class="text-right">
+    <a id="HyperLinkDomain" class="btn btn-info" href="{{}}">RETURN TO VERIFIED WEBSITE</a>
+    </div>    
 </div>
-    </div>
-    <hr>
-   <div class="row">
-    
-        <h3 class="heading">Verified By <span id="entity_name"></span></h3><br>
-        <p class="paragraph">You deserve only the best! That’s it! We have verified businesses that achieve excellence. We look at a wide range of factors to verify this. </p>
-    
-</div>
+   
     </div>
   </div>
 <script>
@@ -74,6 +69,7 @@ let web = window.atob(param['web']);
 	var link = '<a href="'+web+'" style="text-decoration:none;">'+web+'</a>';
     $("#bussiness_link").html(link);
     $("#bussiness_link").attr('href', link);
+    $("#HyperLinkDomain").attr('href',link);
 }
 if(param['entity'] != undefined){
 let entity = window.atob(param['entity']);
