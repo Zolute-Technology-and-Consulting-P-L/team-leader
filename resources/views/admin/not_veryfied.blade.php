@@ -22,7 +22,6 @@
             background-size: cover;
             position: relative;
             color:white; 
-            font-family:cursive;  
         }
         .heading{
             

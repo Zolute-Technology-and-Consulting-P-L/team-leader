@@ -20,6 +20,10 @@ Route::get('/', function () {
 Route::group(['prefix'=>'admin'],function(){
     Route::get('/login', 'admin\Login@index')->name('login');
     Route::post('/authentication','admin\Login@authentication')->name('authentication');
+
+    Route::get('assign/logo-authentication/{assignCode}', 'admin\CompanyController@logoAuthtencation')->name('assignLogoAuthentication');
+    
+    Route::get('assign/page', 'admin\CompanyController@testPage');
 });
 Route::group(['prefix'=>'admin','middleware'=>'authLogin'],function(){
     Route::get('/', 'admin\Dashboard@index')->name('dashboard');
@@ -46,8 +50,6 @@ Route::group(['prefix'=>'admin','middleware'=>'authLogin'],function(){
 
     Route::get('assign/code-download/{id}', 'admin\CompanyController@fileDownload')->name('assignCodeDownload');
 
-    Route::get('assign/logo-authentication/{assignCode}', 'admin\CompanyController@logoAuthtencation')->name('assignLogoAuthentication');
-    Route::get('assign/page', 'admin\CompanyController@testPage');
     
 
     //Entity Master
