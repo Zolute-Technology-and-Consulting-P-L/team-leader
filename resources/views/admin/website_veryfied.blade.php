@@ -15,13 +15,14 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <style>
-        body{
-            background-image:url('http://localhost/team-leader/public/award/logo/red-glitter-sand-texture-on-black-abstract-backgro-PATLLXH.jpg');
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-            position: relative;
-            color:white;  
+     
+        body {
+            background:url('http://localhost/team-leader/public/award/logo/red-glitter-sand-texture-on-black-abstract-backgro-PATLLXH.jpg') no-repeat center center fixed; 
+              -webkit-background-size: cover;
+              -moz-background-size: cover;
+              -o-background-size: cover;
+              background-size: cover;
+              color:white;  
         }
         .heading{
             
@@ -34,24 +35,22 @@
     </style>
 </head>
 <body>
-<div class="row">
+
     <br>
     <div class="container">
-<div class="col-md-6 text-left">
-  <h1 class="heading">Website Verified</h1>
+    <div class="col-md-6 text-left">
+    <h1 class="heading">Website Verified</h1>
     <p class="paragraph">We, at <span class="entity_name">British Service Awards</span>, recognises <span class="bussiness_name"></span> to meet our quality standard <a style="text-decoration:none" id="entity_web" href="https://britishserviceawards.co.uk">britishserviceawards.co.uk</a></p>
     <p class="paragraph">According to our records,  <span class="bussiness_name"></span> operates the website <span style="color:white" id="bussiness_link"></span></p>
     <br></hr>
-    <h1 class="">Verified By <span class="entity_name"></span></h3><br>
+    <h1 class="">Verified By <span class="entity_name"></span></h1><br>
     <p class="paragraph">You deserve only the best! That’s it! We have verified businesses that achieve excellence. We look at a wide range of factors to verify this. </p>
     <br>
     <div class="text-right">
     <a id="HyperLinkDomain" class="btn btn-info" href="">RETURN TO VERIFIED WEBSITE</a>
     </div>    
 </div>
-   
     </div>
-  </div>
 <script>
 $(document).ready(function(){
  var param = getUrlVars();
