@@ -37,7 +37,7 @@
 <div class="row">
     <br>
     <div class="container-fluid">
-<div class="col-md-6 text-left" style="padding-top:200px">
+<div class="col-md-5 text-left" style="padding-top:200px">
   <h1 class="heading">Website Not Verified</h1>
     <br>
     <div class="text-right">
