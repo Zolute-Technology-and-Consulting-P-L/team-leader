@@ -27,24 +27,32 @@
         .heading{
             
             font-weight: bolder;
-            font-size:50px;
+            font-size:72px;
         }
         .bussiness_name{
             font-weight: bold;
         }
+        .font-content{
+            font-size: 20px;
+        }
+        .font-content a{
+            color: #fff;
+            text-decoration:underline;
+        }
+        
     </style>
 </head>
 <body>
 
     <br>
-    <div class="container">
-    <div class="col-md-6 text-left">
+    <div class="container-fluid">
+    <div class="col-md-5 text-left" style="padding-top:200px">
     <h1 class="heading">Website Verified</h1>
-    <p class="paragraph">We, at <span class="entity_name">British Service Awards</span>, recognises <span class="bussiness_name"></span> to meet our quality standard <a style="text-decoration:none" id="entity_web" href="https://britishserviceawards.co.uk">britishserviceawards.co.uk</a></p>
-    <p class="paragraph">According to our records,  <span class="bussiness_name"></span> operates the website <span style="color:white" id="bussiness_link"></span></p>
+    <p class="paragraph font-content">We, at <span class="entity_name">British Service Awards</span>, recognises <span class="bussiness_name"></span> to meet our quality standard <a style="text-decoration:underline" id="entity_web" href="https://britishserviceawards.co.uk">britishserviceawards.co.uk</a></p>
+    <p class="paragraph font-content">According to our records,  <span class="bussiness_name"></span> operates the website <span style="color:white" id="bussiness_link"></span></p>
     <br></hr>
     <h1 class="">Verified By <span class="entity_name"></span></h1><br>
-    <p class="paragraph">You deserve only the best! That’s it! We have verified businesses that achieve excellence. We look at a wide range of factors to verify this. </p>
+    <p class="paragraph font-content">You deserve only the best! That’s it! We have verified businesses that achieve excellence. We look at a wide range of factors to verify this. </p>
     <br>
     <div class="text-right">
     <a id="HyperLinkDomain" class="btn btn-info" href="">RETURN TO VERIFIED WEBSITE</a>
