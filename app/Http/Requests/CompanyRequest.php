@@ -26,7 +26,7 @@ class CompanyRequest extends FormRequest
         return [
             "company_name"=> "required|string|min:4",
             "email" => "required|unique:companies,email,".$this->id,
-            "contact_number" => "required|regex:/^([0-9\s\-\+\(\)]*)$/|digits:10|unique:companies,phone,".$this->id,
+            "contact_number" => "required|regex:/^([0-9\s\-\+\(\)]*)$/|digits:11|unique:companies,phone,".$this->id,
             "website" => "required|url",
             "address" => "required|string",
             "entity" => "required"
