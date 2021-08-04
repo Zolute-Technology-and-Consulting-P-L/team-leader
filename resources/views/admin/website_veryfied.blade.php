@@ -46,10 +46,10 @@
 
     <br>
     <div class="container-fluid">
-    <div class="col-md-5 text-left">
+    <div class="col-md-5 text-left" style="padding-top:200px">
     <h1 class="heading">Website Verified</h1>
-    <p class="paragraph font-content">We, at <span class="entity_name">British Service Awards</span>, recognises <span class="bussiness_name"></span> to meet our quality standard <a style="text-decoration:none" id="entity_web" href="https://britishserviceawards.co.uk">britishserviceawards.co.uk</a></p>
-    <p class="paragraphf ont-content">According to our records,  <span class="bussiness_name"></span> operates the website <span style="color:white" id="bussiness_link"></span></p>
+    <p class="paragraph font-content">We, at <span class="entity_name">British Service Awards</span>, recognises <span class="bussiness_name"></span> to meet our quality standard <a style="text-decoration:underline" id="entity_web" href="https://britishserviceawards.co.uk">britishserviceawards.co.uk</a></p>
+    <p class="paragraph font-content">According to our records,  <span class="bussiness_name"></span> operates the website <span style="color:white" id="bussiness_link"></span></p>
     <br></hr>
     <h1 class="">Verified By <span class="entity_name"></span></h1><br>
     <p class="paragraph font-content">You deserve only the best! That’s it! We have verified businesses that achieve excellence. We look at a wide range of factors to verify this. </p>
