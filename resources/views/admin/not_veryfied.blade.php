@@ -26,7 +26,7 @@
         .heading{
             
             font-weight: bolder;
-            font-size:50px;
+            font-size:72px;
         }
         .bussiness_name{
             font-weight: bold;
@@ -36,8 +36,8 @@
 <body>
 <div class="row">
     <br>
-    <div class="container">
-<div class="col-md-6 text-left">
+    <div class="container-fluid">
+<div class="col-md-6 text-left" style="padding-top:200px">
   <h1 class="heading">Website Not Verified</h1>
     <br>
     <div class="text-right">
